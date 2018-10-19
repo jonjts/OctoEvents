@@ -7,34 +7,25 @@ Kotlin app to receive from Github Webhook, infos about issues events
 - Postgresql
 
 ## How can I run it?
-- First, you have to create the  *octoevents_db* database in your postgresql
-- In your console, run `gradle build`
-- Then, run `gradle bootRun`
-- It's done. You can access http://localhost:1010 to check it
+1. First, you have to create the  *octoevents_db* database in your postgresql
+2. Now, you need to set some parameters in `main/kotlin/resources/application.properties` to became able to create a new webhook. The parameters are:
+    - `hook.user` User to authenticate
+    - `hook.password` Password to authenticate
+    - `hook.repository_owner` The repository owner that you want to create a webhook
+    - `hook.repository` The repository name that you want to create a webhook
+    - `hook.payload_url` The payload url
+2. In your console, run `gradle build`
+3. Then, run `gradle bootRun`
+4. It's done.
 
 *(The dafault server port is 1010, you can change this and other things in application.properties file)*
 
-## How is it works?
-First of all, we need to create a webhook in a repository. Use this endpoint for it: http://localhost:1010/issues/init.
-You have to use a POST request passing informations about authentication and the repository. This datas must be send it in the HTTP Header.
-
-You post request will be something like this:
-```
-POST /issues/init HTTP/1.1
-Host: localhost:1010
-user: pedrinho
-password: xxxxx
-payload_url: http://7653cd54.ngrok.io
-repository_owner: jonjts
-repository: OctoEvents
-Cache-Control: no-cache
-Postman-Token: b78b663c-3753-ee82-cf7a-d5426d029591
-```
-
 *(Tip: Use https://ngrok.com/ to create a public url for you local host)*
-*(Have you got doubts about payload url? check it out https://developer.github.com/webhooks/#payloads)*
 
-Now, every time that an issue is assigned, unassigned, labeled, unlabeled, opened, edited, milestoned, demilestoned, closed, or reopened, the application will perciste this events.
+*(Have you got doubts about payload url? check out https://developer.github.com/webhooks/#payloads)*
+
+## How is it works?
+Every time that an issue is assigned, unassigned, labeled, unlabeled, opened, edited, milestoned, demilestoned, closed, or reopened, the application will persist this events.
 To see this events, you can use this endpoint http://localhost:1010/issues/{id}/events. Sending the issue id.
 
 issues/{id}/events (response)
