@@ -1,7 +1,7 @@
 package br.com.jonjts.octoevents.api
 
 import br.com.jonjts.octoevents.model.Event
-import br.com.jonjts.octoevents.repo.EventRepository
+import br.com.jonjts.octoevents.repository.EventRepository
 import com.google.gson.JsonParser
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Component

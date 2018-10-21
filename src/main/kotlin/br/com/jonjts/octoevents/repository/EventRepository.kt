@@ -1,4 +1,4 @@
-package br.com.jonjts.octoevents.repo
+package br.com.jonjts.octoevents.repository
 
 import br.com.jonjts.octoevents.model.Event
 import org.springframework.data.jpa.repository.Query
