@@ -14,7 +14,6 @@ Kotlin app to receive from Github Webhook, infos about issues events
     - `hook.repository_owner` The repository owner that you want to create a webhook
     - `hook.repository` The repository name that you want to create a webhook
     - `hook.payload_url` The payload url
-2. In your console, run `gradle build`
 3. Then, run `gradle bootRun`
 4. It's done.
 
